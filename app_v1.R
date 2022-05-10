@@ -31,8 +31,8 @@ valores <- function(temp2, rubrica){
   cond <- rubrica %>% 
     filter(tipo == "condicion")
   
-  esq <- rubrica %>% 
-    filter(tipo == "esquema")
+ # esq <- rubrica %>% 
+ #  filter(tipo == "esquema")
   
   ant <- rubrica %>% 
     filter(tipo == "antiguedad")
@@ -91,20 +91,20 @@ valores <- function(temp2, rubrica){
     ungroup()
   
   ##Esquema de enseñanza
-  temp3 <- temp3 %>% 
-    mutate(pts_esquema = rep(NA, nrow(temp3)))
-  
-  for (i in 1:nrow(temp3)){
-    for (l in 1:nrow(esq)){
-      if (temp3$esquema[i] == esq$valor[l]){
-        temp3$pts_esquema[i] <- esq$puntos[l]
-      }
-    }}
-  
-  temp3 <- temp3 %>% 
-    group_by(marca,profesor) %>%
-    mutate(PTS_ESQUEMA = pts_esquema) %>%
-    ungroup()
+  # temp3 <- temp3 %>% 
+  #   mutate(pts_esquema = rep(NA, nrow(temp3)))
+  # 
+  # for (i in 1:nrow(temp3)){
+  #   for (l in 1:nrow(esq)){
+  #     if (temp3$esquema[i] == esq$valor[l]){
+  #       temp3$pts_esquema[i] <- esq$puntos[l]
+  #     }
+  #   }}
+  # 
+  # temp3 <- temp3 %>% 
+  #   group_by(marca,profesor) %>%
+  #   mutate(PTS_ESQUEMA = pts_esquema) %>%
+  #   ungroup()
   
   ## Antigüedad impartiendo la asignatura
   temp3 <- temp3 %>% 
@@ -449,7 +449,7 @@ temp4 <- eventReactive(input$rubrica,{
     group_by(ID_solicitud,profesor) %>% 
     mutate(PTS_PROFESOR = sum(PTS_CONDICION,
                               PTS_ANTIGUEDAD,
-                              PTS_ESQUEMA,
+                              #PTS_ESQUEMA,
                               PTS_DOCENCIA,
                               PTS_EXPERIENCIA)) %>% 
     relocate(semestre_grupo, .before = ID_solicitud) %>% 
@@ -462,7 +462,7 @@ temp4 <- eventReactive(input$rubrica,{
 temp5 <- eventReactive(input$total,{
   temp4() %>% 
   group_by(semestre_grupo, asignatura, ID_solicitud, responsable) %>% 
-  summarise(total = max(PTS_PROFESOR)) %>%
+  summarise(total = mean(PTS_PROFESOR)) %>%
   ungroup() %>% 
   group_by(semestre_grupo, asignatura) %>% 
   arrange(semestre_grupo, asignatura, desc(total)) %>% 

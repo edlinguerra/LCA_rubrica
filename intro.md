@@ -2,9 +2,13 @@
 
 Esta es una aplicación web para agilizar el procesamiento de análisis de
 postulaciones para impartir docencia en las asignaturas de la
-Licenciatura en Ciencias Ambientales (LCA), extensible a cualquier otro
-programa de estudios de la ENES Mérida que use un formulario de
-postulaciones idéntico al de LCA.
+Licenciatura en Ciencias Ambientales (LCA). Se basa en la información
+declarada en los formularios que cada postulante llenó durante la
+convocatoria de impartir docencia en la ENES. El uso de esta aplicación
+es para apoyar al Comité Académico (CA) en la toma de decisiones y **no
+representa** un instrumento estricto de selección de solicitudes. Es
+extensible a cualquier otro programa de estudios de la ENES Mérida que
+use un formulario de postulaciones idéntico al de LCA.
 
 ## Paso 1: Preparación de datos
 
@@ -38,11 +42,11 @@ tabla, esquina izquierda), ya que será de utilidad para que el CA valide
 la información de las solicitudes con preferencia de adjudicación.
 
 El botón `Preseleccionar` totaliza los puntos de cada solicitud según el
-aporte de cada profesor participante. Las solicitudes se presentan según
-la asignatura, semestre y grupo en orden descendiente, con una columna
-de nombre *adjudicación* con dos posibles valores **VALIDAR POR CA** y
-**CONDICIONADA**. Este archivo debe ser descargado en formato .csv
-(parte baja de la tabla, esquina izquierda).
+promedio de puntos de los profesor participantes. Las solicitudes se
+presentan según la asignatura, semestre y grupo en orden descendiente,
+con una columna de nombre *adjudicación* con dos posibles valores
+**VALIDAR POR CA** y **CONDICIONADA**. Este archivo debe ser descargado
+en formato .csv (parte baja de la tabla, esquina izquierda).
 
 Seguidamente, cada CA analizará las solicitudes etiquetadas con
 **VALIDAR POR CA** y, en su caso, cambiar por **VALIDADA** (todo en
