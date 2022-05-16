@@ -422,7 +422,8 @@ server <- function(input, output, session) {
         mutate(fila = row_number()) %>%
         pivot_wider(names_from = variable, values_from = value) %>%
         ungroup() %>%
-        mutate(id_gs = str_remove(string = id_gs, pattern = ".*\\=")) %>%
+        #mutate(id_gs = str_remove(string = id_gs, pattern = ".*\\=")) %>%
+        mutate(id_gs = str_remove(string = id_gs, pattern = ".*user=")) %>%
         group_by(ID_solicitud, profesor) %>%
         mutate(h_index = hindex(id_gs)) %>%
         #mutate(h_index = NA) %>%
